@@ -4,7 +4,7 @@ import crudProvider from '@fusionworks/ra-data-nest-crud'
 import { StatList } from './stat/statList';
 import { StatShow } from './stat/statShow';
 
-const uri = 'http://localhost:3000';
+const uri = 'https://api.uiptel.com';
 const dataProvider = crudProvider(uri);
 
 const App = () => (

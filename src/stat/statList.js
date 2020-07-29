@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, TextField, DateField, UrlField, Filter, TextInput, DateInput } from 'react-admin';
+import { List, Datagrid, TextField, DateField, Filter, TextInput, DateInput } from 'react-admin';
 
 const StatFilter = props => (
     <Filter {...props}>
