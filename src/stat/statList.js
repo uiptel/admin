@@ -10,7 +10,7 @@ const StatFilter = props => (
 );
 
 export const StatList = props => (
-    <List title="Stat list" perPage={15} filters={<StatFilter />}
+    <List title="Stat list" perPage={25} filters={<StatFilter />}
         sort={{ field: 'createdAt', order: 'DESC' }} {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />

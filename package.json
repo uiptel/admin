@@ -11,7 +11,7 @@
     "react": "^16.13.1",
     "react-admin": "^3.7.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4",
     "react-transition-group": "^4.4.1"
   },
   "scripts": {
@@ -21,7 +21,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-trailing-spaces": "error"
+    }
   },
   "browserslist": {
     "production": [
