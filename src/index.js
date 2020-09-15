@@ -15,3 +15,7 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+// Get environment variable from global object __app_env =>>>>>>>>>>>>
+const { build_date: buildDate, vcs_ref: git, digest_image: digestImage, version } = window.__app_env;
+console.log(`version => ${version}; build date => ${buildDate}; image => ${digestImage}; git => ${git}`);
