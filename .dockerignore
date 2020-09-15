@@ -1,0 +1,7 @@
+/node_modules
+/build
+/.env
+/.k8s
+/.git
+/.gitignore
+/sleep.js
