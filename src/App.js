@@ -9,7 +9,7 @@ import httpClient from './httpClient';
 import config from './config';
 
 const dataProvider = crudProvider(config.apiUrl, httpClient);
-const history = createHistory();
+const history = createHistory({ basename: 'admin' });
 
 const App = () => (
   <Admin title="Uiptel Admin" dataProvider={dataProvider} authProvider={authProvider} history={history}>

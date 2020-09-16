@@ -21,7 +21,7 @@ ENV EXPOSE_VARS="BUILD_DATE VCS_REF VERSION DIGEST_IMAGE HOSTNAME NODE_ENV API_U
 ENV BUILD_DATE=${BUILD_DATE} VCS_REF=${COMMIT_ID} VERSION=${VERSION} WORKDIR=/usr/share/nginx/html NODE_ENV=production
 
 COPY .docker/entrypoint.sh /usr/local/bin/
-COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY .docker/prod/nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR ${WORKDIR}
 RUN rm -rf *
 COPY --from=builder /app/build .
