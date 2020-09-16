@@ -16,6 +16,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.vcs-ref=$COMMIT_ID
 LABEL org.label-schema.version=$VERSION
 
+# Will exposing this vars in "entrypoint.sh" while  pod creation to frontend script "env.js"
+ENV EXPOSE_VARS="BUILD_DATE VCS_REF VERSION DIGEST_IMAGE HOSTNAME NODE_ENV API_URL"
 ENV BUILD_DATE=${BUILD_DATE} VCS_REF=${COMMIT_ID} VERSION=${VERSION} WORKDIR=/usr/share/nginx/html NODE_ENV=production
 
 COPY .docker/entrypoint.sh /usr/local/bin/

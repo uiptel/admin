@@ -1,4 +1,4 @@
 
 export default {
-    apiUrl: 'http://localhost:3000',
+    apiUrl: window.__app_env.API_URL,
 };

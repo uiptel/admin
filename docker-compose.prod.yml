@@ -5,7 +5,7 @@ services:
     container_name: ${CONTAINER_NAME}
     image: ${IMAGE}
     environment:
-      DIGEST_IMAGE: 'undefined'
+      API_URL: 'http://localhost:3000'
     build:
       context: .
       dockerfile: .docker/prod/Dockerfile

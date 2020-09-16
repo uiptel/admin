@@ -1,7 +1,8 @@
 window.__app_env = {
-    build_date: null,
-    "vcs_ref": null,
-    version: null,
-    "digest_image": 'undefined',
-    hostname: 'undefined'
+    BUILD_DATE: null,
+    VCS_REF: 'ffff',
+    VERSION: 'dev',
+    DIGEST_IMAGE: '000000000000',
+    HOSTNAME: 'localhost',
+    API_URL: 'http://localhost:3000',
 };
