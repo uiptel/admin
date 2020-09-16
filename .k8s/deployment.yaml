@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin
+  namespace: uiptel
+  labels:
+    app: admin
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: admin
+  template:
+    metadata:
+      labels:
+        app: admin
+    spec:
+      containers:
+      - name: admin
+        image: anryzhov/admin.uiptel:0.1.0
+        imagePullPolicy: Always
+        env:
+          - name: DIGEST_IMAGE
+            value: undefined
+        ports:
+          - containerPort: 80
