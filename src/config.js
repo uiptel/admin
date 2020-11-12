@@ -1,6 +1,6 @@
 
-window.__app_env = {
-    BUILD_DATE: 'now',
+const defaultConfig  = {
+    BUILD_DATE: 'today',
     VCS_REF: '0000',
     DIGEST_IMAGE: 'DEV_SERVE_000',
     VERSION: '0.0.0',
@@ -8,7 +8,8 @@ window.__app_env = {
 };
 
 const config = {
-    apiUrl: window.__app_env.API_URL,
+    ...defaultConfig,
+    ...window.__app_env,
 };
 
 export default config;

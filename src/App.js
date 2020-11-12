@@ -8,7 +8,7 @@ import authProvider from './authProvider';
 import httpClient from './httpClient';
 import config from './config';
 
-const dataProvider = crudProvider(config.apiUrl, httpClient);
+const dataProvider = crudProvider(config.API_URL, httpClient);
 const history = createHistory({ basename: 'admin' });
 
 const App = () => (
