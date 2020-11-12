@@ -18,4 +18,4 @@ serviceWorker.unregister();
 
 // Get environment variable from global object __app_env =>>>>>>>>>>>>
 const { BUILD_DATE: buildDate, VCS_REF: git, DIGEST_IMAGE: digestImage, VERSION: version } = window.__app_env;
-console.log(`version => ${version}; build date => ${buildDate}; image => ${digestImage}; git => ${git}`);
+console.log(`version => ${version}; build_date => ${buildDate}; image => ${digestImage}; VCS_REF => ${git}`);
