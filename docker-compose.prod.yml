@@ -10,7 +10,7 @@ services:
       DIGEST_IMAGE: PROD_00FF
     build:
       context: .
-      dockerfile: .docker/prod/Dockerfile
+      dockerfile: .docker/Dockerfile
       args:
         BUILD_DATE: ${BUILD_DATE}
         VCS_REF: ${VCS_REF}

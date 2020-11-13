@@ -18,5 +18,5 @@ ReactDOM.render(
 serviceWorker.unregister();
 
 // Get environment variable from global object __app_env =>>>>>>>>>>>>
-const { BUILD_DATE: buildDate, VCS_REF: git, DIGEST_IMAGE: digestImage, VERSION: version } = config;
-console.log(`version => ${version}; build_date => ${buildDate}; image => ${digestImage}; VCS_REF => ${git}`);
+const { BUILD_DATE, VCS_REF, VERSION, API_URL, NODE_ENV } = config;
+console.log(`NODE_ENV => ${NODE_ENV}; version => ${VERSION}; build_date => ${BUILD_DATE}; VCS_REF => ${VCS_REF}; API_URL => ${API_URL}`);

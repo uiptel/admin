@@ -1,15 +1,19 @@
 #!/bin/sh
 set -eu
 
-EXPOSE_VARS=${EXPOSE_VARS:-HOSTNAME}
+APP_VARS=${APP_VARS:-HOSTNAME}
 JSON="{"
 
-for VAR in ${EXPOSE_VARS}
+for VAR in ${APP_VARS}
 do
-    JSON="${JSON}\"${VAR}\": \"\${${VAR}}\", "
+    JSON="${JSON}\"${VAR}\": \"$(eval echo \${${VAR}:-undefined})\", "
 done
 JSON="${JSON%??}}"
 
-export JSON=$(echo ${JSON} | envsubst | base64 | tr -d '\n')
-cat index.html | envsubst > /dev/shm/index.html && mv /dev/shm/index.html index.html
+echo REACT_APP_ENV=$(echo ${JSON} | base64 | tr -d '\n') > .env.local
+
+if [ "${1#-}" != "${1}" ] || [ -z "$(command -v "${1}")" ]; then
+  set -- node "$@"
+fi
+
 exec "$@"

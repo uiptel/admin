@@ -1,7 +1,7 @@
 import config from './config';
 
 const login = async ({username, password}) => {
-    const { apiUrl } = config;
+    const { API_URL: apiUrl } = config;
     const request = new Request(`${apiUrl}/auth/login`, {
         method: 'POST',
         body: JSON.stringify({ username, password }),
