@@ -1,13 +1,25 @@
 FROM node:alpine AS builder
 
-WORKDIR /app
-COPY . .
-RUN yarn install --frozen-lockfile && npx react-scripts build
-
-FROM nginx:stable-alpine
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
+ARG NODE_ENV
+ARG API_URL
+
+#  exposing  vars 
+ENV APP_VARS="BUILD_DATE VCS_REF VERSION NODE_ENV API_URL"
+ENV BUILD_DATE=${BUILD_DATE} VCS_REF=${VCS_REF} VERSION=${VERSION} NODE_ENV=${NODE_ENV} API_URL=${API_URL}
+
+WORKDIR /app
+COPY . .
+RUN set -eux; \
+    echo REACT_APP_ENV=$(.docker/encode_vars.sh | base64 | tr -d '\n') > .env.local; \
+    yarn install --frozen-lockfile; \
+    npx react-scripts build
+
+
+FROM nginx:stable-alpine
+
 ARG WORKDIR
 
 # Labels.
@@ -17,15 +29,8 @@ LABEL org.label-schema.build-date=${BUILD_DATE}
 LABEL org.label-schema.vcs-ref=${VCS_REF}}
 LABEL org.label-schema.version=${VERSION}
 
-# Will exposing this vars in "entrypoint.sh" while  pod creation to frontend script "env.js"
-ENV EXPOSE_VARS="BUILD_DATE VCS_REF VERSION DIGEST_IMAGE HOSTNAME NODE_ENV API_URL"
-ENV BUILD_DATE=${BUILD_DATE} VCS_REF=${VCS_REF} VERSION=${VERSION}
 
-COPY .docker/entrypoint.sh /usr/local/bin/
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR ${WORKDIR}
 RUN rm -rf *
 COPY --from=builder /app/build .
-
-ENTRYPOINT ["entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]

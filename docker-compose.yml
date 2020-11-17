@@ -3,15 +3,12 @@ version:  '3.7'
 services:
   nginx:
     image: nginx:stable-alpine
-    command:  ["nginx", "-g", "daemon off;"]
     working_dir: /usr/share/nginx/html
-    environment:
-      NODE_ENV: development
     depends_on:
       - admin
     volumes:
       - ./build:/usr/share/nginx/html:ro
-      - ./.docker/nginx.dev.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - 80:80
 
@@ -35,6 +32,7 @@ services:
       - /home/${USER_NAME}:/home/${USER_NAME}
       - ./:${APP_PATH}
       - ./.docker/entrypoint.sh:/usr/local/bin/entrypoint.sh:ro
+      - ./.docker/encode_vars.sh:/usr/local/bin/encode_vars.sh:ro
     ports:
       - "3010:3000"
 
