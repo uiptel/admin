@@ -6,7 +6,7 @@ metadata:
   labels:
     app: admin
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -21,10 +21,6 @@ spec:
         image: ${DIGEST_IMAGE}
         imagePullPolicy: Always
         env:
-          - name: NODE_ENV
-            value: production
-          - name: API_URL
-            value: https://uiptel.com/api
           - name: DIGEST_IMAGE
             value: ${DIGEST_IMAGE}
         ports:

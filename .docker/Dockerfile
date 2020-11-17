@@ -1,5 +1,4 @@
 FROM node:alpine AS builder
-
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
@@ -19,16 +18,17 @@ RUN set -eux; \
 
 
 FROM nginx:stable-alpine
-
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
 ARG WORKDIR
 
 # Labels.
 LABEL maintainer="ryzhov@uiptel.com"
 LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.build-date=${BUILD_DATE}
-LABEL org.label-schema.vcs-ref=${VCS_REF}}
+LABEL org.label-schema.vcs-ref=${VCS_REF}
 LABEL org.label-schema.version=${VERSION}
-
 
 COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR ${WORKDIR}
