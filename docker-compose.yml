@@ -10,7 +10,7 @@ services:
       - ./build:/usr/share/nginx/html:ro
       - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - 80:80
+      - 81:80
 
   admin:
     container_name: ${CONTAINER_NAME}
@@ -25,7 +25,7 @@ services:
       BUILD_DATE: ${BUILD_DATE}
       VCS_REF: ${VCS_REF}
       VERSION: ${APP_VERSION}
-      API_URL: https://uiptel.com/api
+      API_URL: http://localhost:3000
       APP_VARS: "BUILD_DATE VCS_REF VERSION API_URL NODE_ENV"
 
     volumes:

@@ -14,7 +14,7 @@ export const StatList = props => (
         sort={{ field: 'createdAt', order: 'DESC' }} {...props}>
         <Datagrid rowClick="show">
             <TextField source="id" />
-            <TextField source="userAgent" />
+            <TextField source="href" />
             <TextField source="ip" />
             <TextField source="language" />
             <TextField source="timezone" />

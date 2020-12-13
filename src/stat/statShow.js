@@ -9,9 +9,9 @@ export const StatShow = props => {
             <SimpleShowLayout>
                 <TextField source="id" />
                 <TextField source="version" />
-                <TextField source="digestImage" />
-                <TextField source="userAgent" />
+                <UrlField source="href" />
                 <UrlField source="referer" />
+                <TextField source="userAgent" />
                 <TextField source="ip" />
                 <TextField source="language" />
                 <TextField source="timezone" />
